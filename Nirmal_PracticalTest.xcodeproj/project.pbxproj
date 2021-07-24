@@ -23,6 +23,7 @@
 		5E24DDCC26AC01D500909A3A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24DDCA26AC01D500909A3A /* NewsCell.swift */; };
 		5E24DDCD26AC01D500909A3A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E24DDCB26AC01D500909A3A /* NewsCell.xib */; };
 		5E24DDD226AC06FF00909A3A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24DDD126AC06FF00909A3A /* Extensions.swift */; };
+		5E24DDD726AC0FA600909A3A /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24DDD626AC0FA600909A3A /* NewsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		5E24DDCA26AC01D500909A3A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		5E24DDCB26AC01D500909A3A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		5E24DDD126AC06FF00909A3A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5E24DDD626AC0FA600909A3A /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				5E24DD7626ABFB1900909A3A /* NewsListViewController.swift */,
+				5E24DDD626AC0FA600909A3A /* NewsDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				5E24DD7D26ABFB1900909A3A /* Nirmal_PracticalTest.xcdatamodeld in Sources */,
 				5E24DDAD26ABFE1F00909A3A /* Source.swift in Sources */,
 				5E24DDD226AC06FF00909A3A /* Extensions.swift in Sources */,
+				5E24DDD726AC0FA600909A3A /* NewsDetailViewController.swift in Sources */,
 				5E24DDAB26ABFE1F00909A3A /* News.swift in Sources */,
 				5E24DDAC26ABFE1F00909A3A /* Articles.swift in Sources */,
 				5E24DD7526ABFB1900909A3A /* SceneDelegate.swift in Sources */,

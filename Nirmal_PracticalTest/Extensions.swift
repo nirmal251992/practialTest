@@ -32,7 +32,6 @@ extension String {
     public static func dateconversion(oldFormateDate: String) -> String {
 
         let dateFormatter = DateFormatter()
-        //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let date = dateFormatter.date(from:oldFormateDate)!
         dateFormatter.dateFormat = "MMM d, yyyy h:mm a"

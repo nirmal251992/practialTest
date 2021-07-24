@@ -74,9 +74,16 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
         return newsCell
     }
     
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "NewsDetailViewController") as! NewsDetailViewController
+        vc.articlDetail = results?.articles?[indexPath.row]
+        self.navigationController?.pushViewController(vc,
+                                                      animated: true)
+    }
 }
