@@ -8,14 +8,7 @@
 import UIKit
 
 class NewsDetailViewController: UIViewController,UIScrollViewDelegate,ZoomingDelegate {
-    func pinchZoomHandlerStartPinching() {
-        
-    }
-    
-    func pinchZoomHandlerEndPinching() {
-        
-    }
-    
+  
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -57,23 +50,12 @@ class NewsDetailViewController: UIViewController,UIScrollViewDelegate,ZoomingDel
         }
         article_ImageView.isUserInteractionEnabled = true
         urlLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapUrl(_:))))
-        //article_ImageView.addGestureRecognizer(pinchgesture)
-        //pinchgesture.addTarget(self, action: #selector(didPinch(_:)))
     }
-    @objc func didTapUrl(_ gesture: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "WebViewViewController") as! WebViewViewController
-        vc.webUrl = urlLabel.text
-        self.navigationController?.pushViewController(vc,
-                                                      animated: true)
-    }
-//    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-//       return self.article_ImageView
-//    }
+ 
 }
 extension NewsDetailViewController {
     
-     @objc private func didPinch(_ gesture:UIPinchGestureRecognizer) {
+    @objc private func didPinch(_ gesture:UIPinchGestureRecognizer) {
         
         guard let gestureview = pinchgesture.view else {
             return
@@ -81,4 +63,20 @@ extension NewsDetailViewController {
         gestureview.transform = gestureview.transform.scaledBy(x: pinchgesture.scale, y: pinchgesture.scale)
         pinchgesture.scale = 1
     }
+    
+    @objc func didTapUrl(_ gesture: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "WebViewViewController") as! WebViewViewController
+        vc.webUrl = urlLabel.text
+        self.navigationController?.pushViewController(vc,
+                                                      animated: true)
+    }
+    func pinchZoomHandlerStartPinching() {
+        print("pinchZoomHandlerStartPinching")
+    }
+    
+    func pinchZoomHandlerEndPinching() {
+       print("pinchZoomHandlerEndPinching")
+    }
+    
 }

@@ -15,17 +15,13 @@ class NewsListViewController: UIViewController,NewsCellDelegate {
     var articles : [NewsModel]?
     var results:[Articles]? {
          didSet {
-             // Remove all Previous Records
              DatabaseManager.deleteAllNews()
-             // Add the new spots to Core Data Context
-            self.addNewsToCoreData(self.results!)
-             // Save them to Core Data
+             self.addNewsToCoreData(self.results!)
              DatabaseManager.saveContext()
-             // Reload the tableView
             self.reloadTableView()
          }
      }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,29 +129,6 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
                 print("No shows bros")
             }
         }
-      
-
-//        if let title = results?[indexPath.row].title {
-//            newsCell.titleLabel.text = title
-//        }
-//        if let articleDate = results?[indexPath.row].publishedAt {
-//            newsCell.dateLabel.text = String.dateconversion(oldFormateDate: articleDate)
-//        }
-//        if let authorName = results?[indexPath.row].author {
-//            newsCell.authorLabel.text = authorName
-//        }
-//        if let articleUrl = results?[indexPath.row].url {
-//            newsCell.urlLabel.setTitle(articleUrl, for: .normal)
-//        }
-//        if let imageString = results?[indexPath.row].urlToImage {
-//            let imageUrl = URL(string: imageString)!
-//            UIImage.loadFrom(url: imageUrl) { image in
-//                DispatchQueue.main.async {
-//                    newsCell.news_imageview.image = image
-//                    newsCell.news_imageview.contentMode = .scaleAspectFill
-//                }
-//            }
-//        }
         return newsCell
     }
     
