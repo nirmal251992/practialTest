@@ -16,6 +16,7 @@ class NewsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         table_News_List.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        loadNewsList()
     }
     /*  NewsList Api Func */
     func loadNewsList() {
@@ -53,28 +54,29 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
             newsCell.titleLabel.text = title
         }
         if let articleDate = results?.articles?[indexPath.row].publishedAt {
-            newsCell.dateLabel.text = articleDate
+            newsCell.dateLabel.text = String.dateconversion(oldFormateDate: articleDate)
         }
         if let authorName = results?.articles?[indexPath.row].author {
             newsCell.authorLabel.text = authorName
+        }
+        if let articleUrl = results?.articles?[indexPath.row].url {
+            newsCell.urlLabel.text = articleUrl
         }
         if let imageString = results?.articles?[indexPath.row].urlToImage {
             let imageUrl = URL(string: imageString)!
             UIImage.loadFrom(url: imageUrl) { image in
                 DispatchQueue.main.async {
                     newsCell.news_imageview.image = image
+                    newsCell.news_imageview.contentMode = .scaleAspectFill
                 }
             }
         }
         return newsCell
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 140
     }
     
 }
