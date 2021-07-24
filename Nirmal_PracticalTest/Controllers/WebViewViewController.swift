@@ -7,9 +7,11 @@
 
 import UIKit
 import WebKit
+
 class WebViewViewController: UIViewController,WKNavigationDelegate {
     
-    var webView :WKWebView!
+    var webView : WKWebView!
+    var webUrl : String!
     
     override func loadView() {
         webView = WKWebView()
@@ -19,22 +21,9 @@ class WebViewViewController: UIViewController,WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        let url = URL(string: "www.google.com")!
+        let url = URL(string: webUrl)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
-        
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

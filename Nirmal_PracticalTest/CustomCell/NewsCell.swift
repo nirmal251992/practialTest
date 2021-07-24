@@ -33,7 +33,7 @@ class NewsCell: UITableViewCell {
     }
     
     @IBAction func didTapUrl(_ sender: UIButton) {
-        print(urlLabel.titleLabel?.text)
+
         if let urlText = urlLabel.titleLabel?.text{
             delegate?.passUrl(url: urlText)
          
