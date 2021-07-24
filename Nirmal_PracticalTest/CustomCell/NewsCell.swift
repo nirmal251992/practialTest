@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol NewsCellDelegate {
+    func passUrl(url:String)
+}
+
+
 class NewsCell: UITableViewCell {
 
     @IBOutlet weak var news_imageview: UIImageView!
-    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var urlLabel: UIButton!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var delegate : NewsCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +32,11 @@ class NewsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func didTapUrl(_ sender: UIButton) {
+        print(urlLabel.titleLabel?.text)
+        if let urlText = urlLabel.titleLabel?.text{
+            delegate?.passUrl(url: urlText)
+         
+        }
+    }
 }

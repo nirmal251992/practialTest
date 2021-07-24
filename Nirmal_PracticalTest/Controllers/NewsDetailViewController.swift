@@ -22,10 +22,21 @@ class NewsDetailViewController: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = articlDetail?.title ?? ""
-        authorLabel.text = articlDetail?.author ?? ""
-        dateLabel.text = articlDetail?.publishedAt ?? ""
-        urlLabel.text = articlDetail?.url ?? ""
         descriptionLabel.text = articlDetail?.description ?? ""
+        authorLabel.text = articlDetail?.author ?? ""
+        urlLabel.text = articlDetail?.url ?? ""
+        
+        if let articleDate = articlDetail?.publishedAt {
+            dateLabel.text = String.dateconversion(oldFormateDate: articleDate)
+        }
+        if let imageString = articlDetail?.urlToImage {
+            let imageUrl = URL(string: imageString)!
+            UIImage.loadFrom(url: imageUrl) { image in
+                DispatchQueue.main.async {
+                    self.article_ImageView.image = image
+                    self.article_ImageView.contentMode = .scaleAspectFill
+                }
+            }
+        }
     }
-
 }

@@ -7,14 +7,16 @@
 
 import UIKit
 
+
+
 class NewsListViewController: UIViewController {
     
     @IBOutlet weak var table_News_List: UITableView!
-    
     var results : News?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         table_News_List.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         loadNewsList()
     }
@@ -49,7 +51,7 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsCell = table_News_List.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
-        
+        newsCell.urlLabel.tag = indexPath.row
         if let title = results?.articles?[indexPath.row].title {
             newsCell.titleLabel.text = title
         }
@@ -60,7 +62,7 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
             newsCell.authorLabel.text = authorName
         }
         if let articleUrl = results?.articles?[indexPath.row].url {
-            newsCell.urlLabel.text = articleUrl
+            newsCell.urlLabel.setTitle(articleUrl, for: .normal)
         }
         if let imageString = results?.articles?[indexPath.row].urlToImage {
             let imageUrl = URL(string: imageString)!
@@ -71,9 +73,14 @@ extension NewsListViewController: UITableViewDelegate,UITableViewDataSource {
                 }
             }
         }
+        newsCell.urlLabel.addGestureRecognizer(UITapGestureRecognizer(target:self, action: #selector(tapLabel(gesture:))))
         return newsCell
     }
     
+    @objc func tapLabel(gesture: UITapGestureRecognizer) {
+       
+
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
